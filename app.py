@@ -8,12 +8,12 @@ def index():
     return render_template('index.html')
 
 @app.route('favorites')
-def favorites():
-    Read out favorited movies.
-    filename = os.path.join('data.json')
-    with open(filename) as data_file:
-        data = json.load(data_file)
-        return data
+#def favorites():
+#    Read out favorited movies.
+#    filename = os.path.join('data.json')
+#    with open(filename) as data_file:
+#        data = json.load(data_file)
+#        return data
 
 @app.route('/favorites')
 def favorites():
