@@ -7,7 +7,7 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('favorites')
+#@app.route('favorites')
 #def favorites():
 #    Read out favorited movies.
 #    filename = os.path.join('data.json')
