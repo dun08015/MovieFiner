@@ -30,11 +30,9 @@
           <div class="form-group">
             <label>Title</label>
             <input type="text" class="form-control" name="title">
-            {% if error %}
             <div class="invalid-feedback">
-              Could not find movie.
+              test {{error}}.
             </div>
-            {% endif %}
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
