@@ -40,7 +40,7 @@ def search():
 
     print(movieQueryResponse.text)
 
-    return render_template('search_results.html', results=movieQueryResponse.text)
+    return render_template('search_results.html', results=json.loads(movieQueryResponse.text)['Search'])
 
 
 @app.route('/movie/<movie_oid>')
