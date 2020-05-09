@@ -20,7 +20,7 @@
   {% for movie in results %}
 
   <div class="row justify-content-center">
-    <a href="/movie/{{movie['imdbID']}}?imdbID={{movie['imdbID']}}">{{ movie["Title"] }}</a>
+    <a href="/movie/{{movie['imdbID']}}">{{ movie["Title"] }}</a>
   </div>
 
   {% endfor %}

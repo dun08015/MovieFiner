@@ -43,12 +43,12 @@ def search():
     return render_template('search_results.html', results=json.loads(movieQueryResponse.text)['Search'])
 
 
-@app.route('/movie')
-def movie_detail():
+@app.route('/movie/<imdbID>')
+def movie_detail(imdbID):
     """if fetch data from movie database by oid and display info."""
     #qs_name = request.args.get('name', '')
 
-    query = request.args.get('imdbID')
+    query = escape(imdbID)
 
     key = os.environ['API_KEY']
 
