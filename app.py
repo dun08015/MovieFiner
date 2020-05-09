@@ -38,7 +38,10 @@ def search():
     try:
         movieQueryResponse = requests.get(
             'http://www.omdbapi.com', params=movieParams)
-        print(movieQueryResponse.text)
+        resp =json.loads(movieQueryResponse.text)
+        if resp.Response == False:
+            errorParams = {'errorExists': True, "error":resp.Error, "searchTerm":query}
+            return render_template('index.html', results=errorParams)
         movieQueryResponse.raise_for_status()
     except requests.exceptions.HTTPError as err:
         errorParams = {'errorExists': True, "error":err, "searchTerm":query}
