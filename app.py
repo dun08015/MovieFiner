@@ -50,10 +50,10 @@ def movie_detail(imdbID):
 
     print("query string: ")
 
-    print('http://www.omdbapi.com/?apikey=' + key + escape('&')+'i='+query)
+    print('http://www.omdbapi.com/?apikey=' + key + '%26i='+query)
 
     movieQueryResponse = requests.get(
-        'http://www.omdbapi.com/?apikey=' + key + escape('&')+'i='+query)
+        'http://www.omdbapi.com/?apikey=' + key + '%26i='+query)
 
     print("response: ")
 
