@@ -55,4 +55,4 @@ def movie_detail(imdbID):
     movieQueryResponse = requests.get(
         'http://www.omdbapi.com/?apikey=' + key + '&i='+query)
 
-    return render_template('movie.html', results=json.loads(movieQueryResponse.text)['Search'])
+    return render_template('movie.html', results=json.loads(movieQueryResponse.text))
