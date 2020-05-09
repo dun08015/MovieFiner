@@ -36,9 +36,17 @@
 
         {% elif field == 'Plot' %}
 
+        {% elif field == 'Poster' %}
+
+        {% elif field == 'imdbID' %}
+
+        {% elif field == 'Type' %}
+
+        {% elif field == 'Response' %}
+
         {% elif field == 'Ratings' %}
         {% for row in value %}
-        <p>{{ row }}</p>
+        <p>{{ row.Source }}</p>
         {% endfor %}
         {% else %}
         <p>{{ field }}</p>
