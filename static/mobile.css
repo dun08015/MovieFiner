@@ -7,7 +7,6 @@
     
 }
 
-#favoriteButton:focus,#favoriteButton:active{
-    box-shadow:none !important;
-    outline:0px !important;
+#favoriteButton:focus, #favoriteButton:active:focus, #favoriteButton.active:focus{
+    box-shadow:none;
 }
