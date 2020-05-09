@@ -46,6 +46,13 @@ def search():
 @app.route('/movie/<movie_oid>')
 def movie_detail():
     """if fetch data from movie database by oid and display info."""
-    qs_name = request.args.get('name', '')
-    qs_oid = request.args.get('oid', '')
-    return f'Hello, {escape(name)}!'
+    #qs_name = request.args.get('name', '')
+
+    query = request.args.get('imdbID')
+
+    key = os.environ['API_KEY']
+
+    movieQueryResponse = requests.get(
+        'http://www.omdbapi.com/?apikey=' + key + '&i='+query)
+
+    return render_template('movie.html', results=json.loads(movieQueryResponse.text)['Search'])
