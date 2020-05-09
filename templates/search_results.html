@@ -1,8 +1,25 @@
-<h1>Movie search</h1>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
 
-<a href="/">Home</a>
-<h2>Search Results</h2>
-<p>{{results}}</p>
-{% for movie in results %}
-  <a href="/movie/{{movie['imdbID']}}">{{ movie["Title"] }}</a>
-{% endfor %}
+<div class="container-fluid">
+
+  <div class="row justify-content-center">
+
+    <h1>Movie search</h1>
+
+    <a href="/">Home</a>
+    <h2>Search Results</h2>
+
+  </div>
+
+  {% for movie in results %}
+
+  <div class="row justify-content-center">
+    <a href="/movie/{{movie['imdbID']}}">{{ movie["Title"] }}</a>
+  </div>
+
+  {% endfor %}
+
+</div>
