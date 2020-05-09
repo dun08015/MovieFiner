@@ -44,6 +44,8 @@
 
               {% elif field == 'imdbID' %}
 
+              <input type="hidden" id="favoriteMovie" name="imdbID" value={{value}}>
+              
               {% elif field == 'Type' %}
 
               {% elif field == 'Response' %}
@@ -67,12 +69,13 @@
 
 <script>
   $("#favoriteButton").click(function () {
+    let movieID =$("#favoriteMovie").val();
     $.ajax({
       url: "/favorites", 
       success: function(result){
         let obj = JSON.parse(result);
         console.log(obj);
-        $("#favoriteButton").text(obj.favorite);
+        $("#favoriteButton").text(movieID);
       }});
   });
 </script>
