@@ -47,13 +47,11 @@ def movie_detail(imdbID):
     query = escape(imdbID)
 
     key = os.environ['API_KEY']
-
-    print("query string: ")
-
-    print('http://www.omdbapi.com/?apikey=' + key + '\&i='+query)
+    
+    movieParams = {'i': query, 'apikey':key}
 
     movieQueryResponse = requests.get(
-        'http://www.omdbapi.com/?apikey=' + key + '\&i='+query)
+        'http://www.omdbapi.com',params=movieParams)
 
     print("response: ")
 
