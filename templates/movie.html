@@ -31,8 +31,20 @@
         <h5 class="mt-0">{{ results['Title'] }}</h5>
         <p>{{ results['Plot'] }}</p>
         {% for field, value in results.items() %}
-           <p>{{ field }}</p>
-           <p>{{ value}}</p>
+
+        if {{ field }} == 'Title':
+          continue
+
+        elif {{ field }} == 'Plot':
+          continue
+
+        elif {{ field }} == 'Ratings':
+          {% for row in value %}
+          <p>{{ row }}</p>
+          {% endfor %}
+        else
+        <p>{{ field }}</p>
+        <p>{{ value}}</p>
         {% endfor %}
       </div>
     </div>
