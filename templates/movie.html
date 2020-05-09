@@ -3,59 +3,62 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 
-<div class="container-fluid">
-
+<div class="container">
   <div class="row justify-content-center">
-    <ul class="nav nav-pills">
-      <li class="nav-item">
-        <a class="nav-link" href="/">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/favorites">Favorites</a>
-      </li>
-    </ul>
-  </div>
-
-  <div class="row justify-content-center">
-    <h1>Movie Search</h1>
-  </div>
-
-  <div class="row justify-content-center">
-    <h2>Movie Details</h2>
-  </div>
-  <div class="row justify-content-center">
-    {% if results %}
-    <div class="media">
-      <img src="{{results['Poster']}}" class="align-self-start mr-3" alt="">
-      <div class="media-body">
-        <h5 class="mt-0">{{ results['Title'] }}</h5>
-        <p>{{ results['Plot'] }}</p>
-        <ul class="list-group">
-          {% for field, value in results.items() %}
-
-          {% if field  == 'Title' %}
-
-          {% elif field == 'Plot' %}
-
-          {% elif field == 'Poster' %}
-
-          {% elif field == 'imdbID' %}
-
-          {% elif field == 'Type' %}
-
-          {% elif field == 'Response' %}
-
-          {% elif field == 'Ratings' %}
-          {% for row in value %}
-          <li class="list-group-item"> Rating on {{ row.Source }}: {{ row.Value }}</li>
-          {% endfor %}
-          {% else %}
-          <li class="list-group-item">{{ field }}: {{ value}}</li>
-          {% endif %}
-          {% endfor %}
+    <div class="col-12">
+      <div class="row justify-content-center">
+        <ul class="nav nav-pills">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/favorites">Favorites</a>
+          </li>
         </ul>
       </div>
+
+      <div class="row justify-content-center">
+        <h1>Movie Search</h1>
+      </div>
+
+      <div class="row justify-content-center">
+        <h2>Movie Details</h2>
+      </div>
+      <div class="row justify-content-center">
+        {% if results %}
+        <div class="media">
+          <img src="{{results['Poster']}}" class="align-self-start mr-3" alt="">
+          <div class="media-body">
+            <h5 class="mt-0">{{ results['Title'] }}</h5>
+            <p>{{ results['Plot'] }}</p>
+            <ul class="list-group">
+              {% for field, value in results.items() %}
+
+              {% if field  == 'Title' %}
+
+              {% elif field == 'Plot' %}
+
+              {% elif field == 'Poster' %}
+
+              {% elif field == 'imdbID' %}
+
+              {% elif field == 'Type' %}
+
+              {% elif field == 'Response' %}
+
+              {% elif field == 'Ratings' %}
+              {% for row in value %}
+              <li class="list-group-item"> Rating on {{ row.Source }}: {{ row.Value }}</li>
+              {% endfor %}
+              {% else %}
+              <li class="list-group-item">{{ field }}: {{ value}}</li>
+              {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+        {% endif %}
+      </div>
     </div>
-    {% endif %}
   </div>
 </div>
