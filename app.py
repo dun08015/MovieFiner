@@ -43,7 +43,7 @@ def search():
     return render_template('search_results.html', results=json.loads(movieQueryResponse.text)['Search'])
 
 
-@app.route('/movie/<movie_oid>')
+@app.route('/movie')
 def movie_detail():
     """if fetch data from movie database by oid and display info."""
     #qs_name = request.args.get('name', '')
