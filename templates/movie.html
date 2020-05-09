@@ -1,9 +1,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="{{ url_for('static', filename='mobile.css') }}"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='mobile.css') }}" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
 <div class="container">
@@ -30,12 +31,7 @@
           <img id="poster" src="{{results['Poster']}}" class="img-fluid align-self-start mr-3" alt="">
           <div class="media-body">
             <h5 class="mt-0">{{ results['Title'] }}</h5>
-            <form action="/favorites" method="post">
-              <button type="submit" class="btn btn-outline-primary mt-1 mb-1">Favorite</button>
-              {% if favorite %}
-              <p>{{favorite}}</p>
-              {% endif %}
-            </form>
+            <button type="button" class="btn btn-outline-primary mt-1 mb-1" id="favoriteButton">Favorite</button>
             <p>{{ results['Plot'] }}</p>
             <ul class="list-group">
               {% for field, value in results.items() %}
@@ -68,3 +64,13 @@
     </div>
   </div>
 </div>
+
+<script>
+  $("#favoriteButton").click(function () {
+    $.ajax({
+      url: "/favorites", 
+      success: function(result){
+        $("#favoriteButton").text(result);
+      }});
+  });
+</script>
