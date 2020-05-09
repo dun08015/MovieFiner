@@ -70,7 +70,8 @@
     $.ajax({
       url: "/favorites", 
       success: function(result){
-        $("#favoriteButton").text(result);
+        let obj = jQuery.parseJSON(result);
+        $("#favoriteButton").text(obj.favorite);
       }});
   });
 </script>
