@@ -30,7 +30,11 @@
           <div class="form-group">
             <label>Title</label>
             <input type="text" class="form-control" name="title">
-            <p>test {{error}}</p>
+            {%if errorQuery %}
+            <div class="invalid-feedback d-block">
+              Could not find {{errorQuery}}.
+            </div>
+            {%end if%}
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>

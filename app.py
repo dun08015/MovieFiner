@@ -40,7 +40,7 @@ def search():
     resp =json.loads(movieQueryResponse.text)
     print(resp)
     if "Error" in resp:
-        return render_template('index.html', error="could not find movie")
+        return render_template('index.html', errorQuery=query)
     else:
         return render_template('search_results.html', results=resp['Search'])
 
