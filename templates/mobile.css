@@ -1,3 +1,6 @@
 @media (max-width: 767.98px) {
-
+    #poster{
+        height: 231px;
+        width: 150px;
+    }
 }
