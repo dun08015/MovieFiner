@@ -35,21 +35,13 @@ def search():
 
     movieParams = {'s': query, 'apikey': key}
 
-    try:
-        movieQueryResponse = requests.get(
-            'http://www.omdbapi.com', params=movieParams)
-        resp =json.loads(movieQueryResponse.text)
-        print(resp)
-        return render_template('index.html', error=True)
-        movieQueryResponse.raise_for_status()
-    except requests.exceptions.HTTPError as err:
-        errorParams = {'errorExists': True, "error":err, "searchTerm":query}
-        return render_template('index.html', results=errorParams)
-    except Exception as err:
-        errorParams = {'errorExists': True, "error":err, "searchTerm":query}
-        return render_template('index.html', results=errorParams)
-    else:
-        return render_template('search_results.html', results=json.loads(movieQueryResponse.text)['Search'])
+    movieQueryResponse = requests.get(
+        'http://www.omdbapi.com', params=movieParams)
+    resp =json.loads(movieQueryResponse.text)
+    print(resp)
+    return render_template('index.html', error=True)
+
+    #return render_template('search_results.html', results=json.loads(movieQueryResponse.text)['Search'])
 
 
 @app.route('/movie/<imdbID>')
