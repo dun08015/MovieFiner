@@ -30,7 +30,12 @@
           <img id="poster" src="{{results['Poster']}}" class="img-fluid align-self-start mr-3" alt="">
           <div class="media-body">
             <h5 class="mt-0">{{ results['Title'] }}</h5>
-            <button type="button" class="btn btn-outline-primary mt-1 mb-1">Favorite</button>
+            <form action="/favorites" method="post">
+              <button type="button" class="btn btn-outline-primary mt-1 mb-1">Favorite</button>
+              {% if favorite %}
+              <p>{{favorite}}</p>
+              {% endif %}
+            </form>
             <p>{{ results['Plot'] }}</p>
             <ul class="list-group">
               {% for field, value in results.items() %}
