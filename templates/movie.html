@@ -47,7 +47,6 @@
 
           {% elif field == 'Ratings' %}
           {% for row in value %}
-          <p>{{ row.Source }}</p>
           <li class="list-group-item"> Rating on {{ row.Source }}: {{ row.Value }}</li>
           {% endfor %}
           {% else %}
