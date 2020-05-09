@@ -41,7 +41,8 @@ def search():
     movieQueryResponse = requests.get(
         'http://www.omdbapi.com', params=movieParams)
     resp =json.loads(movieQueryResponse.text)
-    print(resp)
+    
+    #handle no movies returned from query
     if "Error" in resp:
         return render_template('index.html', errorQuery=query)
     else:
