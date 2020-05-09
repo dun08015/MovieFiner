@@ -7,6 +7,7 @@ app = Flask(__name__)
 
 key = os.environ['API_KEY']
 
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -32,11 +33,15 @@ def search():
 
     query = request.form['title']
 
-    movieParams = {'s': query, 'apikey':key}
+    movieParams = {'s': query, 'apikey': key}
 
-    movieQueryResponse = requests.get(
-        'http://www.omdbapi.com',params=movieParams)
-
+    try:
+        movieQueryResponse = requests.get(
+            'http://www.omdbapi.com', params=movieParams)
+        movieQueryResponse.raise_for_status()
+    except requests.exceptions.HTTPError as err:
+        errorParams = {'errorExists': True, "error":err, "searchTerm":query}
+        return render_template('index.html', results=errorParams)
     return render_template('search_results.html', results=json.loads(movieQueryResponse.text)['Search'])
 
 
@@ -45,10 +50,10 @@ def movie_detail(imdbID):
     """if fetch data from movie database by imdbID and display info."""
 
     query = escape(imdbID)
-    
-    movieParams = {'i': query, 'apikey':key}
+
+    movieParams = {'i': query, 'apikey': key}
 
     movieQueryResponse = requests.get(
-        'http://www.omdbapi.com',params=movieParams)
+        'http://www.omdbapi.com', params=movieParams)
 
     return render_template('movie.html', results=json.loads(movieQueryResponse.text))

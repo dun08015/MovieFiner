@@ -1,7 +1,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="{{ url_for('static', filename='mobile.css') }}"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='mobile.css') }}" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
@@ -30,6 +30,11 @@
           <div class="form-group">
             <label>Title</label>
             <input type="text" class="form-control" name="title">
+            {% if results %}
+            <div class="invalid-feedback">
+              Could not find {{results['searchTerms']}}.
+            </div>
+            {% endif %}
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
