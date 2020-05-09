@@ -1,10 +1,17 @@
-<h1>Moview search</h1>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
 
-<a href="/favorites">Favorites</a>
+<div class="container-fluid">
+  <h1>Movie search</h1>
 
-<form action="/search" method="post">
-  <label>Title</label>
-  <input name="title" />
+  <a href="/favorites">Favorites</a>
 
-  <input type="submit" />
-</form>
+  <form action="/search" method="post">
+    <label>Title</label>
+    <input name="title" />
+
+    <input type="submit" />
+  </form>
+</div>
