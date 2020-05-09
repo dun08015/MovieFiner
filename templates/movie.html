@@ -71,6 +71,7 @@
       url: "/favorites", 
       success: function(result){
         let obj = jQuery.parseJSON(result);
+        console.log(obj);
         $("#favoriteButton").text(obj.favorite);
       }});
   });
