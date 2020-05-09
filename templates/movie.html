@@ -30,8 +30,8 @@
         <div class="media">
           <img id="poster" src="{{results['Poster']}}" class="img-fluid align-self-start mr-3" alt="">
           <div class="media-body">
-            <h5 class="mt-0">{{ results['Title'] }}</h5>
-            <button type="button" class="btn btn-outline-primary mt-1 mb-1" id="favoriteButton">Favorite</button>
+            <h5 class="mt-0" id="movieTitle">{{ results['Title'] }}</h5>
+            <button type="button" class="btn btn-outline-primary mt-1 mb-1" id="favoriteButton" data-toggle="button">Favorite</button>
             <p>{{ results['Plot'] }}</p>
             <ul class="list-group">
               {% for field, value in results.items() %}
@@ -71,11 +71,15 @@
   $("#favoriteButton").click(function () {
     let movieID =$("#favoriteMovie").val();
     $.ajax({
-      url: "/favorites", 
-      success: function(result){
+      url: "/favorites",
+      data: { 
+        "movieID": movieID, 
+        "movieTitle": $("#movieTitle").text()
+        },
+        type: "POST",
+        success: function(result){
         let obj = JSON.parse(result);
         console.log(obj);
-        $("#favoriteButton").text(movieID);
       }});
   });
 </script>
