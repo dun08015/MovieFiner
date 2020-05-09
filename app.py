@@ -41,7 +41,7 @@ def search():
         resp =json.loads(movieQueryResponse.text)
         if resp.Response == False:
             errorParams = {'errorExists': True, "error":resp.Error, "searchTerm":query}
-            return render_template('index.html', results=errorParams)
+            return render_template('index.html', params=errorParams)
         movieQueryResponse.raise_for_status()
     except requests.exceptions.HTTPError as err:
         errorParams = {'errorExists': True, "error":err, "searchTerm":query}

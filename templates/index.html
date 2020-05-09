@@ -30,9 +30,9 @@
           <div class="form-group">
             <label>Title</label>
             <input type="text" class="form-control" name="title">
-            {% if results %}
+            {% if params %}
             <div class="invalid-feedback">
-              Could not find {{results['searchTerms']}}.
+              Could not find {{params['searchTerms']}}.
             </div>
             {% endif %}
           </div>
