@@ -38,9 +38,9 @@ def search():
 
     print("response: ")
 
-    print(movieQueryResponse)
+    print(movieQueryResponse.text)
 
-    return render_template('search_results.html', results=movieQueryResponse)
+    return render_template('search_results.html', results=movieQueryResponse.text)
 
 
 @app.route('/movie/<movie_oid>')
