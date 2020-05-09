@@ -39,7 +39,7 @@ def search():
         'http://www.omdbapi.com', params=movieParams)
     resp =json.loads(movieQueryResponse.text)
     print(resp)
-    return render_template('index.html', error=True)
+    return render_template('index.html', error="could not find movie")
 
     #return render_template('search_results.html', results=json.loads(movieQueryResponse.text)['Search'])
 
