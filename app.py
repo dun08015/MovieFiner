@@ -5,6 +5,7 @@ import os
 
 app = Flask(__name__)
 
+key = os.environ['API_KEY']
 
 @app.route('/')
 def index():
@@ -31,10 +32,10 @@ def search():
 
     query = request.form['title']
 
-    key = os.environ['API_KEY']
+    movieParams = {'s': query, 'apikey':key}
 
     movieQueryResponse = requests.get(
-        'http://www.omdbapi.com/?apikey=' + key + '&s='+query)
+        'http://www.omdbapi.com',params=movieParams)
 
     return render_template('search_results.html', results=json.loads(movieQueryResponse.text)['Search'])
 
@@ -45,16 +46,10 @@ def movie_detail(imdbID):
     #qs_name = request.args.get('name', '')
 
     query = escape(imdbID)
-
-    key = os.environ['API_KEY']
     
     movieParams = {'i': query, 'apikey':key}
 
     movieQueryResponse = requests.get(
         'http://www.omdbapi.com',params=movieParams)
-
-    print("response: ")
-
-    print(movieQueryResponse.text)
 
     return render_template('movie.html', results=json.loads(movieQueryResponse.text))
