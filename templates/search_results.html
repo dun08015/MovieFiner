@@ -2,7 +2,7 @@
 
 <a href="/">Home</a>
 <h2>Search Results</h2>
-<p>{{results.Search}}</p>
+<p>{{results["Search"]}}</p>
 {% for movie in results.Search %}
   <a href="/movie/{{movie['imdbID']}}">{{ movie["Title"] }}</a>
 {% endfor %}
