@@ -30,9 +30,9 @@
       <div class="media-body">
         <h5 class="mt-0">{{ results['Title'] }}</h5>
         <p>{{ results['Plot'] }}</p>
-        {% for field, value in results %}
+        {% for field in results %}
            <p>{{ field }}</p>
-           <p>{{ value }}</p>
+           <p>{{ field.value }}</p>
         {% endfor %}
       </div>
     </div>
