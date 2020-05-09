@@ -46,6 +46,10 @@ def movie_detail(imdbID):
 
     query = escape(imdbID)
 
+    print("query: ")
+
+    print(query)
+
     key = os.environ['API_KEY']
 
     movieQueryResponse = requests.get(
