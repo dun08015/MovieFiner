@@ -4,10 +4,10 @@
         height: 231px;
         width: 150px;
     }
-
-    #favoriteButton:active{
-        box-shadow:none !important;
-        outline:0px !important;
-    }
     
+}
+
+#favoriteButton{
+    box-shadow:none !important;
+    outline:0px !important;
 }
