@@ -30,29 +30,30 @@
       <div class="media-body">
         <h5 class="mt-0">{{ results['Title'] }}</h5>
         <p>{{ results['Plot'] }}</p>
-        {% for field, value in results.items() %}
+        <ul class="list-group">
+          {% for field, value in results.items() %}
 
-        {% if field  == 'Title' %}
+          {% if field  == 'Title' %}
 
-        {% elif field == 'Plot' %}
+          {% elif field == 'Plot' %}
 
-        {% elif field == 'Poster' %}
+          {% elif field == 'Poster' %}
 
-        {% elif field == 'imdbID' %}
+          {% elif field == 'imdbID' %}
 
-        {% elif field == 'Type' %}
+          {% elif field == 'Type' %}
 
-        {% elif field == 'Response' %}
+          {% elif field == 'Response' %}
 
-        {% elif field == 'Ratings' %}
-        {% for row in value %}
-        <p>{{ row.Source }}</p>
-        {% endfor %}
-        {% else %}
-        <p>{{ field }}</p>
-        <p>{{ value}}</p>
-        {% endif %}
-        {% endfor %}
+          {% elif field == 'Ratings' %}
+          {% for row in value %}
+          <p>{{ row.Source }}</p>
+          {% endfor %}
+          {% else %}
+          <li class="list-group-item">{{ field }}: {{ value}}</li>
+          {% endif %}
+          {% endfor %}
+        </ul>
       </div>
     </div>
     {% endif %}
