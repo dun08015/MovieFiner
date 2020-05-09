@@ -1,30 +1,43 @@
 from flask import Flask, escape, request, render_template
 import json
+import requests
+import os
 
 app = Flask(__name__)
+
 
 @app.route('/')
 def index():
     return render_template('index.html')
 
-#@app.route('favorites')
-#def favorites():
+# @app.route('favorites')
+# def favorites():
 #    Read out favorited movies.
 #    filename = os.path.join('data.json')
 #    with open(filename) as data_file:
 #        data = json.load(data_file)
 #        return data
 
+
 @app.route('/favorites')
 def favorites():
     """if query params are passed, write movie to json file."""
     return render_template('favorites.html')
 
+
 @app.route('/search', methods=['POST'])
 def search():
     """if POST, query movie api for data and return results."""
+
     query = request.form['title']
-    return f'Hello, {query}!'
+
+    key = os.environ['API_KEY']
+
+    movieQuery = requests.get(
+      'http://www.omdbapi.com/?apikey='+ key +'&s='+query)
+    
+    return f'Hello, {movieQuery.text}!'
+
 
 @app.route('/movie/<movie_oid>')
 def movie_detail():
