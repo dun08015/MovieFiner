@@ -36,10 +36,6 @@ def search():
     movieQueryResponse = requests.get(
         'http://www.omdbapi.com/?apikey=' + key + '&s='+query)
 
-    print("response: ")
-
-    print(movieQueryResponse.text)
-
     return render_template('search_results.html', results=json.loads(movieQueryResponse.text)['Search'])
 
 
@@ -54,5 +50,9 @@ def movie_detail(imdbID):
 
     movieQueryResponse = requests.get(
         'http://www.omdbapi.com/?apikey=' + key + '&i='+query)
+
+    print("response: ")
+
+    print(movieQueryResponse.text)
 
     return render_template('movie.html', results=json.loads(movieQueryResponse.text))
