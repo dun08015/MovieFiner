@@ -42,8 +42,7 @@ def search():
 
 @app.route('/movie/<imdbID>')
 def movie_detail(imdbID):
-    """if fetch data from movie database by oid and display info."""
-    #qs_name = request.args.get('name', '')
+    """if fetch data from movie database by imdbID and display info."""
 
     query = escape(imdbID)
     

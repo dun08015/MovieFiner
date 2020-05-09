@@ -17,12 +17,10 @@
     <h2>Search Results</h2>
   </div>
 
-  {% for movie in results %}
-
-  <div class="row justify-content-center">
+  <div class="list-group justify-content-center">
+    {% for movie in results %}
     <a href="/movie/{{movie['imdbID']}}">{{ movie["Title"] }}</a>
+    {% endfor %}
   </div>
-
-  {% endfor %}
 
 </div>
