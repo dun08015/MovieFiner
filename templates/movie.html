@@ -32,19 +32,18 @@
         <p>{{ results['Plot'] }}</p>
         {% for field, value in results.items() %}
 
-        if {{ field }} == 'Title':
-          continue
+        {% if {{ field }} == 'Title' %}
 
-        elif {{ field }} == 'Plot':
-          continue
+        {% elif {{ field }} == 'Plot' %}
 
-        elif {{ field }} == 'Ratings':
-          {% for row in value %}
-          <p>{{ row }}</p>
-          {% endfor %}
-        else
+        {% elif {{ field }} == 'Ratings' %}
+        {% for row in value %}
+        <p>{{ row }}</p>
+        {% endfor %}
+        {% else %}
         <p>{{ field }}</p>
         <p>{{ value}}</p>
+        {% endif %}
         {% endfor %}
       </div>
     </div>
