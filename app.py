@@ -33,10 +33,10 @@ def search():
 
     key = os.environ['API_KEY']
 
-    movieQuery = requests.get(
+    movieQueryResponse = requests.get(
       'http://www.omdbapi.com/?apikey='+ key +'&s='+query)
     
-    return f'Hello, {movieQuery.text}!'
+    return render_template('search_results.html',results=movieQueryResponse)
 
 
 @app.route('/movie/<movie_oid>')
