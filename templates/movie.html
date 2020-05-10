@@ -31,11 +31,7 @@
           <img id="poster" src="{{results['Poster']}}" class="img-fluid align-self-start mr-3" alt="">
           <div class="media-body">
             <h5 class="mt-0" id="movieTitle">{{ results['Title'] }}</h5>
-            <div class="btn-group-toggle" data-toggle="buttons" id="favoriteButton">
-              <label class="btn btn-primary active">
-                <input type="checkbox" checked autocomplete="off"> Checked
-              </label>
-            </div>
+            <button type="button" class="btn btn-outline-primary mt-1 mb-1" id="favoriteButton">Add to Favorites</button>
             <p>{{ results['Plot'] }}</p>
             <ul class="list-group">
               {% for field, value in results.items() %}
@@ -84,10 +80,10 @@
         success: function(result){
         let obj = JSON.parse(result);
         console.log(obj);
-        if($("#favoriteButton").attr("aria-pressed") === true){
-          ("#favoriteButton").attr("aria-pressed",false);
+        if($("#favoriteButton").text() === "Add to Favorites"){
+          ("#favoriteButton").text("In Favorites");
         }else{
-          ("#favoriteButton").attr("aria-pressed",true);
+          ("#favoriteButton").text("Add to Favorites");
         }
       }});
   });
