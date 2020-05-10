@@ -31,7 +31,7 @@
           <img id="poster" src="{{results['Poster']}}" class="img-fluid align-self-start mr-3" alt="">
           <div class="media-body">
             <h5 class="mt-0" id="movieTitle">{{ results['Title'] }}</h5>
-            <button type="button" class="btn mt-1 mb-1" id="favoriteButton">Favorite</button>
+            <button type="button" class="whiteButton mt-1 mb-1" id="favoriteButton">Favorite</button>
             <p>{{ results['Plot'] }}</p>
             <ul class="list-group">
               {% for field, value in results.items() %}
@@ -80,12 +80,12 @@
         success: function(result){
         let obj = JSON.parse(result);
         console.log(obj);
-        if($("#favoriteButton").hasClass("unClicked")){
-          $("#favoriteButton").removeClass("unClicked");
-          $("#favoriteButton").addClass("clicked");
+        if($("#favoriteButton").hasClass("whiteButton")){
+          $("#favoriteButton").removeClass("whiteButton");
+          $("#favoriteButton").addClass("blueButton");
         }else{
-          $("#favoriteButton").removeClass("clicked");
-          $("#favoriteButton").addClass("unClicked");
+          $("#favoriteButton").removeClass("blueButton");
+          $("#favoriteButton").addClass("whiteButton");
         }
       }});
   });
