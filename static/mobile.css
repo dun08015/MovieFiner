@@ -8,7 +8,7 @@
 .clicked {
     color: #fff;
     background-color: #007bff;
-    border-color: #007bff
+    border-color: #007bff;
 }
 
 .clicked:hover {
@@ -20,23 +20,25 @@
 .clicked:focus {
     color: #fff;
     background-color: #007bff;
-    border-color: #007bff
+    border-color: #007bff;
 }
 
 .unClicked {
     color: #007bff;
-    border-color: #007bff
+    border-color: #007bff;
+    background-color: #fff;
 }
 
 .unClicked:hover {
     color: #fff;
     background-color: #007bff;
-    border-color: #007bff
+    border-color: #007bff;
 }
 
 .unClicked:focus {
     color: #007bff;
-    border-color: #007bff
+    border-color: #007bff;
+    background-color: #fff;
 }
 
 #favoriteButton:focus {
