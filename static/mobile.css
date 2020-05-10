@@ -11,7 +11,7 @@
     border-color: #007bff;
 }
 
-#favoriteButton:Hover{
+#favoriteButton:hover{
     color: #007bff;
     background-color: #fff;
     border-color: #007bff;
