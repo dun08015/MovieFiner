@@ -34,6 +34,9 @@
             <button type="button" class="btn btn-primary mt-1 mb-1" id="favoriteButton">Favorite</button>
             <p>{{ results['Plot'] }}</p>
             <ul class="list-group">
+
+              <!-- insert movie details but skip the ones we dont care about or already used-->
+
               {% for field, value in results.items() %}
 
               {% if field  == 'Title' %}
@@ -45,7 +48,7 @@
               {% elif field == 'imdbID' %}
 
               <input type="hidden" id="favoriteMovie" name="imdbID" value={{value}}>
-              
+
               {% elif field == 'Type' %}
 
               {% elif field == 'Response' %}
@@ -70,37 +73,42 @@
 <script>
   $("#favoriteButton").click(function () {
 
-    let movieID =$("#favoriteMovie").val();
+    //set up colors to check and toggle favorites button
 
     let unClickedBackColor = "rgb(255, 255, 255)";
     let unClickedTextColor = "rgb(0, 123, 255)";
 
     let clickedBackColor = "rgb(0, 123, 255)";
     let clickedTextColor = "rgb(255, 255, 255)";
-    
+
+    let isFavorite = false;
+
+    if ($("#favoriteButton").css("background-color") === unClickedBackColor) {
+      $("#favoriteButton").css("background-color", clickedBackColor);
+      $("#favoriteButton").css("color", clickedTextColor);
+      isFavorite = true;
+    } else {
+      $("#favoriteButton").css("background-color", unClickedBackColor);
+      $("#favoriteButton").css("color", unClickedTextColor);
+    }
+
+    let movieID = $("#favoriteMovie").val();
 
     $.ajax({
 
       url: "/favorites",
-      data: { 
-        "movieID": movieID, 
-        "movieTitle": $("#movieTitle").text()
-        },
-        type: "POST",
-        success: function(result){
+      data: {
+        "movieID": movieID,
+        "movieTitle": $("#movieTitle").text(),
+        "isFavorite": isFavorite
+      },
+      type: "POST",
+      success: function (result) {
 
         let obj = JSON.parse(result);
         console.log(obj);
-
-        if($("#favoriteButton").css("background-color") === unClickedBackColor){
-          $("#favoriteButton").css("background-color",clickedBackColor);
-          $("#favoriteButton").css("color",clickedTextColor);
-        }else{
-          $("#favoriteButton").css("background-color",unClickedBackColor);
-          $("#favoriteButton").css("color",unClickedTextColor);
-        }
-
-      }});
+      }
+    });
 
   });
 </script>

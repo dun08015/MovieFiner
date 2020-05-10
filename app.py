@@ -12,22 +12,44 @@ key = os.environ['API_KEY']
 def index():
     return render_template('index.html')
 
-# @app.route('favorites')
-# def favorites():
-#    Read out favorited movies.
-#    filename = os.path.join('data.json')
-#    with open(filename) as data_file:
-#        data = json.load(data_file)
-#        return data
+
+@app.route('favorites')
+def favorites():
+    # Read out favorited movies.
+    filename = os.path.join('data.json')
+    with open(filename) as data_file:
+        data = json.load(data_file)
+        return render_template('favorites.html', results=data)
 
 
 @app.route('/favorites', methods=['POST'])
 def favorites():
     """if query params are passed, write movie to json file."""
-    #return render_template('favorites.html')
-    return json.dumps({
-        "favorite": "added"
-    })
+
+    movieID = request.form['movieID']
+    movieTitle = request.form['movieTitle']
+    isFavorite = request.form['isFavorite']
+
+    movie = {
+        'movieID': movieID,
+        'movieTitle': movieTitle
+    }
+
+    filename = os.path.join('data.json')
+
+    with open(filename, 'r+') as outfile:
+        data = json.load(outfile)
+        if isFavorite == True:
+            data['movies'].append(movie)
+            outfile.seek(0)
+            json.dump(data, outfile)
+        else:
+            data['movies'].remove(movie)
+            outfile.seek(0)
+            json.dump(data, outfile)
+        return json.dumps({
+            "result": "success!"
+        })
 
 
 @app.route('/search', methods=['POST'])
@@ -45,9 +67,9 @@ def search():
     movieQueryResponse = requests.get(
         'http://www.omdbapi.com', params=movieParams)
 
-    resp =json.loads(movieQueryResponse.text)
-    
-    #handle condition where no movies are returned from query
+    resp = json.loads(movieQueryResponse.text)
+
+    # handle condition where no movies are returned from query
     if "Error" in resp:
         return render_template('index.html', errorQuery=query)
     else:
