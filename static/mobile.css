@@ -5,13 +5,18 @@
     }
 }
 
-.btn-outline-primary:hover {
+#favoriteButton:hover {
     color: #007bff;
     background-color: #fff;
     border-color: #007bff
 }
 
-#favoriteButton.focus, #favoriteButton:focus, #favoriteButton:active, #favoriteButton:active:focus, #favoriteButton.active:focus {
+#favoriteButton:focus{
+    box-shadow: none;
+    background-color: none;
+}
+
+#favoriteButton:active{
     box-shadow: none;
     background-color: none;
 }
