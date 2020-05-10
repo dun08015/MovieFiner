@@ -6,7 +6,3 @@
     }
     
 }
-
-#favoriteButton:focus, #favoriteButton:active:focus, #favoriteButton.active:focus{
-    box-shadow:none;
-}
