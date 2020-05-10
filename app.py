@@ -38,13 +38,16 @@ def search():
 
     strippedQuery = query.strip()
 
-    movieParams = {'s': strippedQuery, 'apikey': key}
+    wildCardQuery = "*" + strippedQuery + "*"
+
+    movieParams = {'s': wildCardQuery, 'apikey': key}
 
     movieQueryResponse = requests.get(
         'http://www.omdbapi.com', params=movieParams)
+
     resp =json.loads(movieQueryResponse.text)
     
-    #handle no movies returned from query
+    #handle condition where no movies are returned from query
     if "Error" in resp:
         return render_template('index.html', errorQuery=query)
     else:
