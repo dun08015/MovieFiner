@@ -124,3 +124,7 @@
 .original.disabled, .original:disabled {
     opacity: .65
 }
+
+a.original.disabled, fieldset:disabled a.original {
+    pointer-events: none
+}
