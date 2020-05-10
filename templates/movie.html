@@ -81,9 +81,11 @@
         let obj = JSON.parse(result);
         console.log(obj);
         if($("#favoriteButton").text() === "Add to Favorites"){
-          ("#favoriteButton").text("In Favorites");
+          $("#favoriteButton").text("In Favorites");
+          $("#favoriteButton").removeClass("btn-outline-primary");
         }else{
-          ("#favoriteButton").text("Add to Favorites");
+          $("#favoriteButton").text("Add to Favorites");
+          $("#favoriteButton").addClass("btn-primary");
         }
       }});
   });
