@@ -9,44 +9,40 @@
     color: #fff;
     background-color: #007bff;
     border-color: #007bff;
+    box-shadow: none;
 }
 
 .clicked:hover {
     color: #007bff;
     background-color: #fff;
     border-color: #007bff;
+    box-shadow: none;
 }
 
 .clicked:focus {
     color: #fff;
     background-color: #007bff;
     border-color: #007bff;
+    box-shadow: none;
 }
 
 .unClicked {
     color: #007bff;
-    border-color: #007bff;
     background-color: #fff;
+    border-color: #007bff;
+    box-shadow: none;
 }
 
 .unClicked:hover {
     color: #fff;
     background-color: #007bff;
     border-color: #007bff;
+    box-shadow: none;
 }
 
 .unClicked:focus {
     color: #007bff;
-    border-color: #007bff;
     background-color: #fff;
-}
-
-#favoriteButton:focus {
+    border-color: #007bff;
     box-shadow: none;
-    background-color: none;
-}
-
-#favoriteButton:active {
-    box-shadow: none;
-    background-color: none;
 }
