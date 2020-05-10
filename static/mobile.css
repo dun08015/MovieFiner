@@ -3,10 +3,22 @@
         height: 231px;
         width: 150px;
     }
+    .btn-outline-primary {
+        color: #007bff;
+        border-color: #007bff
+    }
+    .btn-outline-primary:hover {
+    }
+    .btn-outline-primary.focus, .btn-outline-primary:focus {
+    }
 }
 
-.btn-outline-primary:hover{color:#007bff;background-color:#fff;border-color:#007bff}
+.btn-outline-primary:hover {
+    color: #007bff;
+    background-color: #fff;
+    border-color: #007bff
+}
 
-#favoriteButton:focus, #favoriteButton:active:focus, #favoriteButton.active:focus{
-    box-shadow:none;
+#favoriteButton.focus, #favoriteButton:focus, #favoriteButton:active:focus, #favoriteButton.active:focus {
+    box-shadow: none;
 }
