@@ -36,7 +36,9 @@ def search():
 
     query = request.form['title']
 
-    movieParams = {'s': query, 'apikey': key}
+    strippedQuery = query.strip()
+
+    movieParams = {'s': strippedQuery, 'apikey': key}
 
     movieQueryResponse = requests.get(
         'http://www.omdbapi.com', params=movieParams)
