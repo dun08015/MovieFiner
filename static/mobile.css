@@ -11,6 +11,12 @@
     border-color: #007bff;
 }
 
+#favoriteButton:Hover{
+    color: #007bff;
+    background-color: #fff;
+    border-color: #007bff;
+}
+
 #favoriteButton.focus, #favoriteButton:focus{
     outline: 0;
     box-shadow: none;
