@@ -25,9 +25,24 @@
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
 }
 
+@media (prefers-reduced-motion:reduce) {
+    .blueButton {
+        transition: none
+    }
+}
+
+.blueButton:hover {
+    color: #212529;
+    text-decoration: none
+}
+
 .blueButton.focus, .blueButton:focus {
     outline: 0;
     box-shadow: none;
+}
+
+.blueButton.disabled, .blueButton:disabled {
+    opacity: .65
 }
 
 .whiteButton {
@@ -50,7 +65,23 @@
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
 }
 
+@media (prefers-reduced-motion:reduce) {
+    .whiteButton {
+        transition: none
+    }
+}
+
+.whiteButton:hover {
+    color: #212529;
+    text-decoration: none
+}
+
 .whiteButton.focus, .whiteButton:focus {
     outline: 0;
     box-shadow: none;
 }
+
+.whiteButton.disabled, .whiteButton:disabled {
+    opacity: .65
+}
+
