@@ -11,7 +11,7 @@
     border-color: #007bff
 }
 
-#favoriteButton.focus, #favoriteButton:focus, #favoriteButton:active:focus, #favoriteButton.active:focus {
+#favoriteButton.focus, #favoriteButton:focus, #favoriteButton:active, #favoriteButton:active:focus, #favoriteButton.active:focus {
     box-shadow: none;
     background-color: none;
 }
