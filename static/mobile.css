@@ -18,3 +18,17 @@
     border-color: #007bff;
     box-shadow: none;
 }
+
+.unClicked:hover {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+    box-shadow: none;
+}
+
+.unClicked:focus {
+    color: #007bff;
+    background-color: #fff;
+    border-color: #007bff;
+    box-shadow: none;
+}
