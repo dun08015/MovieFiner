@@ -29,9 +29,9 @@
         {% if results %}
         <div class="media">
           <img id="poster" src="{{results['Poster']}}" class="img-fluid align-self-start mr-3" alt="">
-          <div class="media-body">
+          <div class="media-body" id="movieData">
             <h5 class="mt-0" id="movieTitle">{{ results['Title'] }}</h5>
-            <button type="button" class="btn btn-outline-primary mt-1 mb-1" id="favoriteButton" data-toggle="button">Favorite</button>
+            <button type="button" class="btn btn-outline-primary mt-1 mb-1" id="favoriteButton">Favorite</button>
             <p>{{ results['Plot'] }}</p>
             <ul class="list-group">
               {% for field, value in results.items() %}
@@ -80,6 +80,7 @@
         success: function(result){
         let obj = JSON.parse(result);
         console.log(obj);
+        $("#movieData").button('toggle');
       }});
   });
 </script>
