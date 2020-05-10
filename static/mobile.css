@@ -5,6 +5,8 @@
     }
 }
 
+.btn-outline-primary:hover{color:#007bff;background-color:#fff;border-color:#007bff}
+
 #favoriteButton:focus, #favoriteButton:active:focus, #favoriteButton.active:focus{
     box-shadow:none;
 }
