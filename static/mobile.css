@@ -3,16 +3,19 @@
         height: 231px;
         width: 150px;
     }
-    .btn-light {
-        color: #007bff;
-        border-color: #007bff
-    }
-    .btn-light:hover {
-        color: #fff;
-        background-color: #007bff;
-        border-color: #007bff
-    }
-    .btn-light.focus, .btn-light:focus {
-        box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .5)
-    }
+}
+
+.btn-light {
+    color: #007bff;
+    border-color: #007bff
+}
+
+.btn-light:hover {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff
+}
+
+.btn-light.focus, .btn-light:focus {
+    box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .5)
 }
