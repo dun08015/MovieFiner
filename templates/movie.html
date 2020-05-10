@@ -95,9 +95,13 @@
         if($("#favoriteButton").css("background-color") === unClickedBackColor){
           $("#favoriteButton").css("background-color",clickedBackColor);
           $("#favoriteButton").css("color",clickedTextColor);
+          $("#favoriteButton").hover("background-color",clickedBackColor);
+          $("#favoriteButton").hover("color",clickedTextColor);
         }else{
           $("#favoriteButton").css("background-color",unClickedBackColor);
           $("#favoriteButton").css("color",unClickedTextColor);
+          $("#favoriteButton").hover("background-color",unClickedBackColor);
+          $("#favoriteButton").hover("color",unClickedTextColor);
         }
 
       }});
