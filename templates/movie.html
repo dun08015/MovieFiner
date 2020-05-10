@@ -31,7 +31,11 @@
           <img id="poster" src="{{results['Poster']}}" class="img-fluid align-self-start mr-3" alt="">
           <div class="media-body">
             <h5 class="mt-0" id="movieTitle">{{ results['Title'] }}</h5>
-            <button type="button" class="btn btn-outline-primary mt-1 mb-1" aria-pressed="true" id="favoriteButton">Favorite</button>
+            <div class="btn-group-toggle" data-toggle="buttons" id="favoriteButton">
+              <label class="btn btn-primary active">
+                <input type="checkbox" checked autocomplete="off"> Checked
+              </label>
+            </div>
             <p>{{ results['Plot'] }}</p>
             <ul class="list-group">
               {% for field, value in results.items() %}
