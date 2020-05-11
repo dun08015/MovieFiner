@@ -19,9 +19,8 @@ def favorites():
     filename = os.path.join('data.json')
     with open(filename) as data_file:
         data = json.load(data_file)
-        favorites = json.dumps(data['Movies'])
-        print("sending: "+favorites)
-        return render_template('favorites.html', results=favorites)
+        #favorites = json.dumps(data)
+        return render_template('favorites.html', results=data['Movies'])
 
 
 @app.route('/favorites', methods=['POST'])
@@ -79,8 +78,6 @@ def search():
         'http://www.omdbapi.com', params=movieParams)
 
     resp = json.loads(movieQueryResponse.text)
-
-    print("sending: "+resp['Search'])
 
     # handle condition where no movies are returned from query
     if "Error" in resp:
