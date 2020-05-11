@@ -20,7 +20,7 @@ def favorites():
     with open(filename) as data_file:
         data = json.load(data_file)
         favorites = json.dumps(data)
-        print("sending: "+favorites['Movies'])
+        print("sending: "+favorites[0])
         return render_template('favorites.html', results=favorites)
 
 
