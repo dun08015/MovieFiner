@@ -43,6 +43,7 @@ def favoritesPost():
             data['movies'].append(movie)
             outfile.seek(0)
             json.dump(data, outfile)
+            outfile.truncate()
         else:
             try:
                 data['movies'].remove(movie)
@@ -51,6 +52,7 @@ def favoritesPost():
             "result": "value error on removing favorite!"})
             outfile.seek(0)
             json.dump(data, outfile)
+            outfile.truncate()
 
         return json.dumps({
             "result": "success!"
