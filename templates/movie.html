@@ -7,73 +7,91 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-12">
-      <div class="row justify-content-center">
-        <ul class="nav nav-pills">
-          <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/favorites">Favorites</a>
-          </li>
-        </ul>
-      </div>
-
-      <div class="row justify-content-center">
-        <h2>Movie Details:</h2>
-      </div>
-      <hr>
-      <div class="row justify-content-center">
-        {% if results %}
-        <div class="media">
-          <img id="poster" src="{{results['Poster']}}" class="img-fluid align-self-start mr-3" alt="">
-          <div class="media-body">
-            <h5 class="mt-0" id="movieTitle">{{ results['Title'] }}</h5>
-            <button type="button" class="btn btn-primary mt-1 mb-1" id="favoriteButton">Favorite</button>
-            <p>{{ results['Plot'] }}</p>
-            <ul class="list-group">
-
-              <!-- insert movie details but skip the ones we dont care about or already used-->
-
-              {% for field, value in results.items() %}
-
-              {% if field  == 'Title' %}
-
-              {% elif field == 'Plot' %}
-
-              {% elif field == 'Poster' %}
-
-              {% elif field == 'imdbID' %}
-
-              <input type="hidden" id="favoriteMovie" name="imdbID" value={{value}}>
-
-              {% elif field == 'Type' %}
-
-              {% elif field == 'Response' %}
-
-              {% elif field == 'Ratings' %}
-              {% for row in value %}
-              <li class="list-group-item"> Rating on {{ row.Source }}: {{ row.Value }}</li>
-              {% endfor %}
-              {% else %}
-              <li class="list-group-item">{{ field }}: {{ value}}</li>
-              {% endif %}
-              {% endfor %}
-            </ul>
-          </div>
+<body onload="setFavoriteButton()">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <div class="row justify-content-center">
+          <ul class="nav nav-pills">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/favorites">Favorites</a>
+            </li>
+          </ul>
         </div>
-        {% endif %}
+
+        <div class="row justify-content-center">
+          <h2>Movie Details:</h2>
+        </div>
+        <hr>
+        <div class="row justify-content-center">
+          {% if results %}
+          <div class="media">
+            <img id="poster" src="{{results['Poster']}}" class="img-fluid align-self-start mr-3" alt="">
+            <div class="media-body">
+              <h5 class="mt-0" id="movieTitle">{{ results['Title'] }}</h5>
+              <!-- store value to change button color if movie is favorite -->
+              <input type="hidden" id="isFavorite" name="favorite" value={{ results['Favorite'] }}>
+              
+              <button type="button" class="btn btn-primary mt-1 mb-1" id="favoriteButton">Favorite</button>
+              <p>{{ results['Plot'] }}</p>
+              <ul class="list-group">
+
+                <!-- insert movie details but skip the ones we dont care about or already used-->
+
+                {% for field, value in results.items() %}
+
+                {% if field  == 'Title' %}
+
+                {% elif field == 'Plot' %}
+
+                {% elif field == 'Poster' %}
+
+                {% elif field == 'imdbID' %}
+
+                <input type="hidden" id="favoriteMovie" name="imdbID" value={{value}}>
+
+                {% elif field == 'Type' %}
+
+                {% elif field == 'Response' %}
+
+                {% elif field == 'Ratings' %}
+                {% for row in value %}
+                <li class="list-group-item"> Rating on {{ row.Source }}: {{ row.Value }}</li>
+                {% endfor %}
+                {% else %}
+                <li class="list-group-item">{{ field }}: {{ value}}</li>
+                {% endif %}
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+          {% endif %}
+        </div>
       </div>
     </div>
   </div>
-</div>
+</body>
 
 <script>
+
+  function setFavoriteButton() {
+
+    if ($("#isFavorite").val() > -1) {
+      $("#favoriteButton").css("background-color", clickedBackColor);
+      $("#favoriteButton").css("color", clickedTextColor);
+    } else {
+      $("#favoriteButton").css("background-color", unClickedBackColor);
+      $("#favoriteButton").css("color", unClickedTextColor);
+    }
+
+  }
   function toggleButtonColor() {
 
     //set up colors to check and toggle favorites button
+    //couldn't just remove/add class due to bootstrap overriding
 
     let isClicked = false;
 
@@ -95,6 +113,8 @@
     return isClicked;
 
   }
+
+  //add/remove movie from favorites file
 
   $("#favoriteButton").click(function () {
 

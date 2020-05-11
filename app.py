@@ -116,6 +116,6 @@ def movie_detail():
 
     movieDetailObject = json.loads(movieQueryResponse.text)
 
-    movieDetailObject.update({"favorite": indexInFavorites})
+    movieDetailObject.update({"Favorite": indexInFavorites})
 
     return render_template('movie.html', results=movieDetailObject)
