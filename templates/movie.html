@@ -75,6 +75,8 @@
 
     //set up colors to check and toggle favorites button
 
+    let isClicked = false;
+
     let unClickedBackColor = "rgb(255, 255, 255)";
     let unClickedTextColor = "rgb(0, 123, 255)";
 
@@ -84,21 +86,21 @@
     if ($("#favoriteButton").css("background-color") === unClickedBackColor) {
       $("#favoriteButton").css("background-color", clickedBackColor);
       $("#favoriteButton").css("color", clickedTextColor);
-      isFavorite = true;
+      isClicked = true;
     } else {
       $("#favoriteButton").css("background-color", unClickedBackColor);
       $("#favoriteButton").css("color", unClickedTextColor);
     }
 
-  }
-  
-  $("#favoriteButton").click(function () {
+    return isClicked;
 
-    let isFavorite = false;
+  }
+
+  $("#favoriteButton").click(function () {
 
     let movieID = $("#favoriteMovie").val();
 
-    toggleButtonColor();
+    let isFavorite = toggleButtonColor();
 
     $.ajax({
 
