@@ -114,8 +114,8 @@ def movie_detail():
     movieQueryResponse = requests.get(
         'http://www.omdbapi.com', params=movieParams)
 
-    movieQueryResponse.update({"favorite": indexInFavorites})
+    movieDetailObject = json.loads(movieQueryResponse.text)
 
-    print(movieQueryResponse.text)
+    movieDetailObject.update({"favorite": indexInFavorites})
 
-    return render_template('movie.html', results=json.loads(movieQueryResponse.text))
+    return render_template('movie.html', results=movieDetailObject)
