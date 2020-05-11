@@ -39,7 +39,7 @@ def favoritesPost():
 
     with open(filename, 'r+') as outfile:
         data = json.load(outfile)
-        if isFavorite == True:
+        if isFavorite == 'true':
             data['movies'].append(movie)
             outfile.seek(0)
             json.dump(data, outfile)
