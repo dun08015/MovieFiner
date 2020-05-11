@@ -44,6 +44,9 @@ def favoritesPost():
             outfile.seek(0)
             json.dump(data, outfile)
             outfile.truncate()
+            return json.dumps({
+                "result": "favorite added!"
+                })
         else:
             try:
                 data['movies'].remove(movie)
@@ -53,10 +56,9 @@ def favoritesPost():
             outfile.seek(0)
             json.dump(data, outfile)
             outfile.truncate()
-
-        return json.dumps({
-            "result": "success!"
-        })
+            return json.dumps({
+                "result": "favorite removed!"
+                })
 
 
 @app.route('/search', methods=['POST'])
