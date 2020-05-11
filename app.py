@@ -21,7 +21,7 @@ def favorites():
         data = json.load(data_file)
         favorites = json.dumps(data)
         print("sending: "+favorites)
-        return render_template('favorites.html', results=favorites)
+        return render_template('favorites.html', results=favorites['Movies'])
 
 
 @app.route('/favorites', methods=['POST'])
@@ -42,7 +42,7 @@ def favoritesPost():
     with open(filename, 'r+') as outfile:
         data = json.load(outfile)
         if isFavorite == 'true':
-            data['movies'].append(movie)
+            data['Movies'].append(movie)
             outfile.seek(0)
             json.dump(data, outfile)
             outfile.truncate()
@@ -51,7 +51,7 @@ def favoritesPost():
                 })
         else:
             try:
-                data['movies'].remove(movie)
+                data['Movies'].remove(movie)
             except ValueError:
                 return json.dumps({
             "result": "value error on removing favorite!"})
