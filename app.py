@@ -26,13 +26,13 @@ def favorites():
 def favoritesPost():
     """if query params are passed, write movie to json file."""
 
-    movieID = request.form['movieID']
-    movieTitle = request.form['movieTitle']
+    movieID = request.form['imdbID']
+    movieTitle = request.form['Title']
     isFavorite = request.form['isFavorite']
 
     movie = {
-        'movieID': movieID,
-        'movieTitle': movieTitle
+        'imdbID': movieID,
+        'Title': movieTitle
     }
 
     filename = os.path.join('data.json')
@@ -93,8 +93,8 @@ def movie_detail():
     movieTitle = request.args.get('title')
 
     movie = {
-        'movieID': movieID,
-        'movieTitle': movieTitle
+        'imdbID': movieID,
+        'Title': movieTitle
     }
 
     #check if movie is a favorite

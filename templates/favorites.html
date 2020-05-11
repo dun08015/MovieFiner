@@ -1,8 +1,38 @@
-<h1>Movie search</h1>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="{{ url_for('static', filename='mobile.css') }}"/>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
 
-<a href="/">Home</a>
-<h2>Favorites</h2>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <div class="row justify-content-center">
+        <ul class="nav nav-pills">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/favorites">Favorites</a>
+          </li>
+        </ul>
+      </div>
 
-{% for movie in results %}
-  <p>{{ movie["movieTitle"] }}</p>
-{% endfor %}
+      <div class="row justify-content-center">
+        <h2>Favorites:</h2>
+      </div>
+      <hr>
+
+      <div class="row justify-content-center">
+        <div class="list-group">
+          {% for movie in results %}
+          <a href="/movie?imdbID={{movie['imdbID']}}&title={{ movie['Title'] }}" class="list-group-item list-group-item-action">{{ movie['Title'] }}</a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
