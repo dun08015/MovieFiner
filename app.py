@@ -89,7 +89,7 @@ def search():
 def movie_detail():
     """if fetch data from movie database by imdbID and display info."""
 
-    query = request.args('imdbID')
+    query = request.args.get('imdbID')
 
     #check if movie is a favorite
     #filename = os.path.join('data.json')
