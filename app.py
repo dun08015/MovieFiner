@@ -23,7 +23,7 @@ def favorites():
 
 
 @app.route('/favorites', methods=['POST'])
-def favorites():
+def favoritesPost():
     """if query params are passed, write movie to json file."""
 
     movieID = request.form['movieID']
