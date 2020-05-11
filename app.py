@@ -20,7 +20,7 @@ def favorites():
     with open(filename) as data_file:
         data = json.load(data_file)
         favorites = json.dumps(data)
-        return render_template('favorites.html', results=favorites['Movies'])
+        return render_template('favorites.html', results=favorites)
 
 
 @app.route('/favorites', methods=['POST'])
