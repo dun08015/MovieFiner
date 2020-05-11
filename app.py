@@ -44,9 +44,14 @@ def favoritesPost():
             outfile.seek(0)
             json.dump(data, outfile)
         else:
-            data['movies'].remove(movie)
+            try:
+                data['movies'].remove(movie)
+            except ValueError:
+                return json.dumps({
+            "result": "value error on removing favorite!"})
             outfile.seek(0)
             json.dump(data, outfile)
+
         return json.dumps({
             "result": "success!"
         })
