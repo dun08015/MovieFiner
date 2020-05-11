@@ -71,7 +71,7 @@
 </div>
 
 <script>
-  $("#favoriteButton").click(function () {
+  function toggleButtonColor() {
 
     //set up colors to check and toggle favorites button
 
@@ -80,8 +80,6 @@
 
     let clickedBackColor = "rgb(0, 123, 255)";
     let clickedTextColor = "rgb(255, 255, 255)";
-
-    let isFavorite = false;
 
     if ($("#favoriteButton").css("background-color") === unClickedBackColor) {
       $("#favoriteButton").css("background-color", clickedBackColor);
@@ -92,7 +90,15 @@
       $("#favoriteButton").css("color", unClickedTextColor);
     }
 
+  }
+  
+  $("#favoriteButton").click(function () {
+
+    let isFavorite = false;
+
     let movieID = $("#favoriteMovie").val();
+
+    toggleButtonColor();
 
     $.ajax({
 
