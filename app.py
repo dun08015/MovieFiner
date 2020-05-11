@@ -89,19 +89,31 @@ def search():
 def movie_detail():
     """if fetch data from movie database by imdbID and display info."""
 
-    query = request.args.get('imdbID')
-    title = request.args.get('title')
+    movieID = request.args.get('imdbID')
+    movieTitle = request.args.get('title')
 
-    print(title)
+    movie = {
+        'movieID': movieID,
+        'movieTitle': movieTitle
+    }
 
     #check if movie is a favorite
-    #filename = os.path.join('data.json')
-    #with open(filename, 'r+') as outfile:
-    #    data = json.load(outfile)
 
-    movieParams = {'i': query, 'apikey': key}
+    indexInFavorites = -1
+
+    filename = os.path.join('data.json')
+    with open(filename, 'r+') as outfile:
+        data = json.load(outfile)
+        try:
+            indexInFavorites = data['Movies'].index(movie)
+        except ValueError:
+            indexInFavorites = -1
+
+    movieParams = {'i': movieID, 'apikey': key}
 
     movieQueryResponse = requests.get(
         'http://www.omdbapi.com', params=movieParams)
+
+    print(movieQueryResponse.text)
 
     return render_template('movie.html', results=json.loads(movieQueryResponse.text))
