@@ -80,6 +80,8 @@ def search():
 
     resp = json.loads(movieQueryResponse.text)
 
+    print("sending: "+resp['Search'])
+
     # handle condition where no movies are returned from query
     if "Error" in resp:
         return render_template('index.html', errorQuery=query)
