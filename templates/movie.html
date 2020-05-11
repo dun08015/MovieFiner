@@ -34,7 +34,7 @@
               <h5 class="mt-0" id="movieTitle">{{ results['Title'] }}</h5>
               <!-- store value to change button color if movie is favorite -->
               <input type="hidden" id="isFavorite" name="favorite" value={{ results['Favorite'] }}>
-              
+
               <button type="button" class="btn btn-primary mt-1 mb-1" id="favoriteButton">Favorite</button>
               <p>{{ results['Plot'] }}</p>
               <ul class="list-group">
@@ -79,6 +79,12 @@
 
   function setFavoriteButton() {
 
+    let unClickedBackColor = "rgb(255, 255, 255)";
+    let unClickedTextColor = "rgb(0, 123, 255)";
+
+    let clickedBackColor = "rgb(0, 123, 255)";
+    let clickedTextColor = "rgb(255, 255, 255)";
+
     if ($("#isFavorite").val() > -1) {
       $("#favoriteButton").css("background-color", clickedBackColor);
       $("#favoriteButton").css("color", clickedTextColor);
@@ -88,6 +94,7 @@
     }
 
   }
+
   function toggleButtonColor() {
 
     //set up colors to check and toggle favorites button
