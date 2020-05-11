@@ -18,8 +18,9 @@ def favorites():
     # Read out favorited movies.
     filename = os.path.join('data.json')
     with open(filename) as data_file:
-        data = json.loads(data_file)
-        return render_template('favorites.html', results=data)
+        data = json.load(data_file)
+        favorites = json.dumps(data)
+        return render_template('favorites.html', results=favorites)
 
 
 @app.route('/favorites', methods=['POST'])
