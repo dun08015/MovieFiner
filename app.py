@@ -19,7 +19,6 @@ def favorites():
     filename = os.path.join('data.json')
     with open(filename) as data_file:
         data = json.load(data_file)
-        #favorites = json.dumps(data)
         return render_template('favorites.html', results=data['Movies'])
 
 
@@ -86,11 +85,16 @@ def search():
         return render_template('search_results.html', results=resp['Search'])
 
 
-@app.route('/movie/<imdbID>')
-def movie_detail(imdbID):
+@app.route('/movie')
+def movie_detail():
     """if fetch data from movie database by imdbID and display info."""
 
-    query = escape(imdbID)
+    query = request.args('imdbID')
+
+    #check if movie is a favorite
+    #filename = os.path.join('data.json')
+    #with open(filename, 'r+') as outfile:
+    #    data = json.load(outfile)
 
     movieParams = {'i': query, 'apikey': key}
 
